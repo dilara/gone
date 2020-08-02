@@ -1,0 +1,13 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - tmp/**/*
+    - node_modules/**/*
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/**/*
+Style/Documentation:
+  Enabled: false
+Style/SpecialGlobalVars:
+  Enabled: false
