@@ -4,6 +4,10 @@ AllCops:
     - tmp/**/*
     - node_modules/**/*
 
+Metrics/BlockLength:
+  Exclude:
+    - config/initializers/devise.rb
+
 Style/ClassAndModuleChildren:
   Exclude:
     - test/**/*
