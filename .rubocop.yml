@@ -3,8 +3,14 @@ AllCops:
     - bin/**/*
     - tmp/**/*
     - node_modules/**/*
+    - db/schema.rb
+    - db/migrate/*.rb
 
 Metrics/BlockLength:
+  Exclude:
+    - config/initializers/devise.rb
+
+Layout/LineLength:
   Exclude:
     - config/initializers/devise.rb
 
