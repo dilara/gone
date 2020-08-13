@@ -14,6 +14,7 @@ var jQuery = require("jquery");
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 
+require("@fortawesome/fontawesome-free/js/all");
 require("bootstrap");
 require("admin-lte");
 
