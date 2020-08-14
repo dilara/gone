@@ -5,6 +5,8 @@ AllCops:
     - node_modules/**/*
     - db/schema.rb
     - db/migrate/*.rb
+    - config/initializers/simple_form_bootstrap.rb
+    - config/initializers/simple_form.rb
 
 Metrics/BlockLength:
   Exclude:
