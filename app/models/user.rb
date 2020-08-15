@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # Callbacks
-  before_validation :set_random_password, on: :create, if: Proc.new { |user| !user.customer? }
+  before_validation :set_random_password, on: :create, if: proc { |user| !user.customer? }
 
   # Enums
   enum status: { active: 0, inactive: 1 }
