@@ -1,0 +1,58 @@
+<div class="card card-solid">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
+        <div class="col-12">
+          <%= image_tag 'tmp/prod-1.jpg', class: "product-image", alt: "Product Image" %>
+        </div>
+        <div class="col-12 product-image-thumbs">
+          <div class="product-image-thumb active">
+            <%= image_tag 'tmp/prod-1.jpg', alt: "Product Image" %>
+          </div>
+          <div class="product-image-thumb">
+            <%= image_tag 'tmp/prod-2.jpg', alt: "Product Image" %>
+          </div>
+          <div class="product-image-thumb">
+            <%= image_tag 'tmp/prod-3.jpg', alt: "Product Image" %>
+          </div>
+          <div class="product-image-thumb">
+            <%= image_tag 'tmp/prod-4.jpg', alt: "Product Image" %>
+          </div>
+          <div class="product-image-thumb">
+            <%= image_tag 'tmp/prod-5.jpg', alt: "Product Image" %>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <h3 class="my-3"><%= @auction.name %></h3>
+        <p><%= @auction.description %></p>
+
+        <div class="bg-gray py-2 px-3 mt-4">
+          <h2 class="mb-0">
+            Highest BID: <%= number_to_currency(rand(1_000..2_000), unit: "₺", separator: ",", format: "%n %u") %>
+          </h2>
+          <h4 class="mt-0">
+            <small>
+              Base price: <%= number_to_currency(@auction.base_price, unit: "₺", separator: ",", format: "%n %u") %>
+            </small>
+          </h4>
+        </div>
+
+        <div class="mt-4">
+          <div class="btn btn-primary btn-lg btn-flat">
+            <i class="fas fa-hand-holding fa-lg mr-2"></i> 
+            BID
+          </div>
+
+          <div class="btn btn-default btn-lg btn-flat">
+            <i class="fas fa-heart fa-lg mr-2"></i> 
+            Add to Wishlist
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag "admin-lte/dist/js/demo.js" %>
