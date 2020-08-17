@@ -1,39 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GoNE</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= render "layouts/shared/head" %>
 
-  <body class="hold-transition sidebar-mini layout-fixed">
+  <body class="hold-transition layout-top-nav">
     <div class="wrapper">
-
-      <%= render 'layouts/navbar' %>
-
-      <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="index3.html" class="brand-link">
-          <%= image_tag "logo.png", alt: "GoNE Logo", class: "brand-image img-circle elevation-3", style: "opacity: .8" %>
-          <span class="brand-text font-weight-light">Going, going, gone!</span>
-        </a>
-
-        <%= render 'layouts/sidebar' %>
-      </aside>
+      <%= render "layouts/navbar" %>
 
       <div class="content-wrapper">
         <div class="content-header">
-          <div class="container-fluid">
+          <div class="container">
             <%= yield :head %>
           </div>
         </div>
 
-        <section class="content">
-          <div class="container-fluid">
+        <div class="content">
+          <div class="container">
             <% if notice %>
               <p class="alert alert-success"><%= notice %></p>
             <% end %>
@@ -43,20 +24,17 @@
 
             <%= yield %>
           </div>
-        </section>
+        </div>
       </div>
 
-      <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-        All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-          <b>Version</b> 3.0.5
-        </div>
-      </footer>
-
       <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+          <h5>Title</h5>
+          <p>Sidebar content</p>
+        </div>
       </aside>
+
+      <%= render "layouts/shared/footer" %>
     </div>
   </body>
 </html>

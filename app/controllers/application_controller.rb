@@ -4,12 +4,14 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
 
-  layout :layout_by_resource
+  layout :layout_by_authority
 
   protected
 
-  def layout_by_resource
-    return 'devise' if devise_controller? && (resource_name == :user) && %w[new create].include?(action_name)
+  def layout_by_authority
+    return 'guest' if devise_controller? && (resource_name == :user) && %w[new create].include?(action_name)
+
+    return 'authority' unless current_user.customer?
 
     'application'
   end

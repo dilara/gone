@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <%= render "layouts/shared/head" %>
+
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+      <%= render "layouts/authority/navbar" %>
+
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="index3.html" class="brand-link">
+          <%= image_tag "logo.png", alt: "GoNE Logo", class: "brand-image img-circle elevation-3", style: "opacity: .8" %>
+          <span class="brand-text font-weight-light">Going, going, gone!</span>
+        </a>
+
+        <%= render "layouts/authority/sidebar" %>
+      </aside>
+
+      <div class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <%= yield :head %>
+          </div>
+        </div>
+
+        <section class="content">
+          <div class="container-fluid">
+            <% if notice %>
+              <p class="alert alert-success"><%= notice %></p>
+            <% end %>
+            <% if alert %>
+              <p class="alert alert-danger"><%= alert %></p>
+            <% end %>
+
+            <%= yield %>
+          </div>
+        </section>
+      </div>
+
+      <%= render "layouts/shared/footer" %>
+
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <%= render "layouts/shared/head" %>
+
+  <body class="hold-transition login-page">
+    <div class="login-box">
+      <div class="login-logo">
+        <a href="<%= root_path %>"><b>Go</b>NE</a>
+      </div>
+      <div class="card">
+        <div class="card-body login-card-body">
+          <%= yield %>
+
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
