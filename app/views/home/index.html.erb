@@ -5,3 +5,5 @@
     </div>
   </div>
 <% end %>
+
+<%= render current_user.customer? ? 'customer' : 'authority' %>

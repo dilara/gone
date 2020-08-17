@@ -1,0 +1,20 @@
+<div class="row">
+  <% Auction.all.each do |auction| %> 
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <%= image_tag "logo.png", class: "img-fluid" %>
+            </div>
+          </div>
+          <h5 class="card-title"><%= auction.name %></h5>
+          <p class="card-text"><%= auction.description %></p>
+          <hr>
+          <%= link_to "Show", "#", class: "card-link" %>
+          <%= link_to "BID", "#", class: "card-link" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
