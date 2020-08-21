@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   # Relations
   has_many :auctions, foreign_key: 'owner_id', inverse_of: :owner, dependent: :destroy
+  has_one_attached :avatar, dependent: :destroy
 
   # Validations
   validates :first_name, presence: true, length: { maximum: 255 }
