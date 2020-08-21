@@ -1,11 +1,11 @@
 <div class="row">
-  <% Auction.all.each do |auction| %> 
+  <% Auction.all.with_attached_cover.each do |auction| %>
     <div class="col-lg-4">
       <div class="card">
         <div class="card-body">
           <div class="row">
             <div class="offset-md-3 col-md-6">
-              <%= image_tag "logo.png", class: "img-fluid" %>
+              <%= image_tag auction.cover, class: "img-fluid" %>
             </div>
           </div>
           <h5 class="card-title"><%= auction.name %></h5>

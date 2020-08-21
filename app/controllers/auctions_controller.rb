@@ -48,6 +48,6 @@ class AuctionsController < ApplicationController
   end
 
   def auction_params
-    params.require(:auction).permit(:name, :description, :base_price, :starts_at, :expires_at)
+    params.require(:auction).permit(:name, :description, :base_price, :starts_at, :expires_at, :cover)
   end
 end
