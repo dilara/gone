@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   layout :layout_by_authority
 
+  def current_user
+    UserDecorator.new(super) unless super.nil?
+  end
+
   protected
 
   def layout_by_authority
