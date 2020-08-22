@@ -15,6 +15,12 @@ class User < ApplicationRecord
 
   # Relations
   has_many :auctions, foreign_key: 'owner_id', inverse_of: :owner, dependent: :destroy
+  has_many :following_follow_ups, class_name: 'FollowUp', foreign_key: 'follower_id',
+                                  inverse_of: :follower, dependent: :destroy
+  has_many :follower_follow_ups, class_name: 'FollowUp', foreign_key: 'following_id',
+                                 inverse_of: :following, dependent: :destroy
+  has_many :followings, through: :following_follow_ups
+  has_many :followers, through: :follower_follow_ups
   has_one_attached :avatar, dependent: :destroy
 
   # Validations

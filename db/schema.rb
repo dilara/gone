@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_140412) do
+ActiveRecord::Schema.define(version: 2020_08_22_122304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 2020_08_18_140412) do
     t.index ["owner_id"], name: "index_auctions_on_owner_id"
   end
 
+  create_table "follow_ups", force: :cascade do |t|
+    t.bigint "follower_id", null: false
+    t.bigint "following_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id"], name: "index_follow_ups_on_follower_id"
+    t.index ["following_id"], name: "index_follow_ups_on_following_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", limit: 255, default: "", null: false
     t.string "encrypted_password", limit: 255, default: "", null: false
@@ -67,4 +76,6 @@ ActiveRecord::Schema.define(version: 2020_08_18_140412) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "auctions", "users", column: "owner_id"
+  add_foreign_key "follow_ups", "users", column: "follower_id"
+  add_foreign_key "follow_ups", "users", column: "following_id"
 end
