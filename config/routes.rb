@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   devise_for :user, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
 
-  resources :auctions
+  resources :auctions do
+    resources :bids, only: :create
+  end
+
   resources :users
 end
