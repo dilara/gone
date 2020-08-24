@@ -7,11 +7,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # Callbacks
-  before_validation :set_random_password, on: :create, if: proc { |user| !user.customer? }
+  before_validation :set_random_password, on: :create, if: proc { |user| !user.member? }
 
   # Enums
   enum status: { active: 0, inactive: 1 }
-  enum role: { customer: 0, admin: 1 }
+  enum role: { member: 0, admin: 1 }
 
   # Relations
   has_many :auctions, foreign_key: 'owner_id', inverse_of: :owner, dependent: :destroy

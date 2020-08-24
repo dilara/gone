@@ -6,4 +6,4 @@
   </div>
 <% end %>
 
-<%= render current_user.customer? ? 'customer' : 'authority' %>
+<%= render current_user.member? ? 'member' : 'authority' %>

@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def layout_by_authority
     return 'guest' if devise_controller? && (resource_name == :user) && %w[new create].include?(action_name)
 
-    return 'authority' unless current_user.customer?
+    return 'authority' unless current_user.member?
 
     'application'
   end
