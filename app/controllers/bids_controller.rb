@@ -4,7 +4,7 @@ class BidsController < ApplicationController
   before_action :set_auction
 
   def create
-    @bid = @auction.bids.create(bid_params.merge(bidder_id: current_user.id, made_at: Time.zone.now))
+    @bid = @auction.bids.create(bid_params.merge(bidder_id: current_user.id))
     respond_to :js
   end
 
