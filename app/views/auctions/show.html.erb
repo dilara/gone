@@ -23,7 +23,12 @@
           <div class="bg-gray py-2 px-3 mt-4">
             <h2 class="mb-0">
               Highest BID:
-              <div id="last_bid"><%= number_to_currency(rand(1_000..2_000), unit: "₺", separator: ",", format: "%n %u") %></div>
+              <div id="last_bid">
+                <%= number_to_currency(@highest_bid.offer, unit: "₺", separator: ",", format: "%n %u") %>
+                <small>
+                  by <%= link_to UserDecorator.new(@highest_bid.bidder).full_name, member_path(@highest_bid.bidder_id) %>
+                </small>
+              </div>
             </h2>
             <h4 class="mt-0">
               <small>

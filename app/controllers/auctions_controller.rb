@@ -7,7 +7,9 @@ class AuctionsController < ApplicationController
     @auctions = Auction.all
   end
 
-  def show; end
+  def show
+    @highest_bid = @auction.highest_bid
+  end
 
   def new
     @auction = Auction.new
