@@ -8,16 +8,31 @@
 
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">User</h3>
+    <h3 class="card-title">
+      <i class="fas fa-user"></i> User
+    </h3>
     <div class="card-tools">
       <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-tool btn-warning" %>
       <%= link_to 'Back', users_path, class: "btn btn-tool btn-default" %>
     </div>
   </div>
+
   <div class="card-body">
-    <div class="row">
-      <div class="col-md-12">
-      </div>
-    </div>
+    <dl class="row">
+      <dt class="col-sm-4">First Name</dt>
+      <dd class="col-sm-8"><%= @user.first_name %></dd>
+
+      <dt class="col-sm-4">Last Name</dt>
+      <dd class="col-sm-8"><%= @user.last_name %></dd>
+
+      <dt class="col-sm-4">Email</dt>
+      <dd class="col-sm-8"><%= @user.email %></dd>
+
+      <dt class="col-sm-4">Status</dt>
+      <dd class="col-sm-8"><%= @user.status %></dd>
+
+      <dt class="col-sm-4">Role</dt>
+      <dd class="col-sm-8"><%= @user.role %></dd>
+    </dl>
   </div>
 </div>
