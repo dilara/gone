@@ -1,1 +1,21 @@
-$('#last_bid').html("<%= number_to_currency @bid.offer, unit: "₺", separator: ",", format: "%n %u" %>");
+<% if @bid.errors.any? %>
+  var new_bid_alert_content = `
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+      <p id="errors"><%= @bid.errors.full_messages.to_sentence %></p>
+    </div>
+  `;
+
+  $('#new_bid_alert').html(new_bid_alert_content);
+<% else %>
+  var last_bid_content = `
+    <%= number_to_currency(@bid.offer, unit: "₺", separator: ",", format: "%n %u") %>
+    <small>
+      by <%= link_to current_user.full_name, member_path(current_user) %>
+    </small>
+  `;
+
+  $('#new_bid_alert').html("");
+  $('#last_bid').html(last_bid_content);
+<% end %>

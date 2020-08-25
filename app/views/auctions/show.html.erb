@@ -22,7 +22,8 @@
         <div class="col-12">
           <div class="bg-gray py-2 px-3 mt-4">
             <h2 class="mb-0">
-              Highest BID: <p id="last_bid"><%= number_to_currency(rand(1_000..2_000), unit: "₺", separator: ",", format: "%n %u") %></p>
+              Highest BID:
+              <div id="last_bid"><%= number_to_currency(rand(1_000..2_000), unit: "₺", separator: ",", format: "%n %u") %></div>
             </h2>
             <h4 class="mt-0">
               <small>
@@ -33,15 +34,18 @@
 
           <div class="mt-4">
             <%= simple_form_for([@auction, Bid.new], remote: true) do |f| %>
-              <div class="form-inputs">
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= f.input :offer, include_blank: false %>
-                  </div>
+              <div id="new_bid_alert"></div>
+              <div class="input-group input-group-lg mb-3">
+                <span class="input-group-prepend">
+                  <%= f.button :submit, data: { confirm: 'Are you sure?' }, class: "btn btn-info btn-flat" %>
+                </span>
+
+                <%= f.input :offer, placeholder: "", include_blank: false, label: false, wrapper: false %>
+
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-lira-sign"></i></span>
                 </div>
               </div>
-
-              <%= f.button :submit, class: "btn btn-success btn-block btn-lg btn-flat" %>
             <% end %>
           </div>
         </div>
