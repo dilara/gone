@@ -17,6 +17,7 @@ class Auction < ApplicationRecord
                          numericality: { greater_than: 0, less_than: 1_000_000 }
   validates :starts_at, presence: true
   validates :expires_at, presence: true
+  validates_with AuctionValidator
 
   def highest_bid
     bids.order(offer: :desc).first
