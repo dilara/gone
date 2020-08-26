@@ -1,0 +1,37 @@
+<% content_for :head do %>
+  <div class="row mb-2">
+    <div class="col-sm-6">
+      <h1 class="m-0 text-dark">Editing Auction Images</h1>
+    </div>
+  </div>
+<% end %>
+
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title">Editing Auction Images</h3>
+  </div>
+
+  <%= simple_form_for(@auction, url: update_images_auction_path(@auction), method: :patch) do |f| %>
+    <div class="card-body">
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-md-12">
+            <% @auction.images.each do |image| %>
+              <%= image_tag image, size: "100x100" %>
+            <% end %>
+
+            <%= f.input :images, as: :file, input_html: { multiple: true }, include_blank: false %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <%= f.button :submit, class: 'btn btn-success' %>
+      <%= link_to 'Back', auctions_path, class: 'btn btn-default' %>
+    </div>
+  <% end %>
+</div>

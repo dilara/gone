@@ -10,6 +10,11 @@
           <div class="product-image-thumb active">
             <%= image_tag @auction.cover, alt: "Product Image" %>
           </div>
+          <% @auction.images.each do |image| %>
+            <div class="product-image-thumb">
+              <%= image_tag image, alt: "Product Image" %>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="col-12 col-sm-6">

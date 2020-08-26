@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 
   resources :auctions do
     resources :bids, only: :create
+
+    member do
+      get   :edit_images
+      patch :update_images
+    end
   end
 
   resources :users
