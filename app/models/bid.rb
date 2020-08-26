@@ -12,6 +12,7 @@ class Bid < ApplicationRecord
   validates :offer, presence: true, format:  { with: /\A\d+(?:\.\d{0,2})?\z/ },
                     numericality: { greater_than: 0, less_than: 1_000_000 }
   validates :made_at, presence: true
+  validates_with BidValidator
 
   private
 
