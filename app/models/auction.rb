@@ -21,4 +21,8 @@ class Auction < ApplicationRecord
   def highest_bid
     bids.order(offer: :desc).first
   end
+
+  def expired?
+    expires_at < Time.zone.now
+  end
 end
