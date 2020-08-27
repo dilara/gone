@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-body">
+    <%= link_to auction do %>
+      <div class="row">
+        <div class="offset-lg-1 col-lg-10">
+          <%= image_tag auction.cover.variant(resize_to_fill: [200, 300]), class: "img-fluid" %>
+        </div>
+      </div>
+    <% end %>
+    <hr>
+    <h5 class="card-title"><%= auction.name %></h5>
+    <h5 class="card-title" style="float: right">
+    <%= number_to_currency(auction.base_price, unit: "₺", separator: ",", format: "%n %u") %>
+    </h5>
+  </div>
+</div>
