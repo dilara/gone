@@ -14,7 +14,7 @@ class Auction < ApplicationRecord
   validates :status, inclusion: { in: statuses.keys }
   validates :name, presence: true, length: { maximum: 255 }
   validates :description, presence: true
-  validates :base_price, presence: true, format:  { with: /\A\d+(?:\.\d{0,2})?\z/ },
+  validates :base_price, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ },
                          numericality: { greater_than: 0, less_than: 1_000_000 }
   validates :starts_at, presence: true
   validates :expires_at, presence: true
