@@ -1,7 +1,7 @@
 <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
   <div class="container">
     <a href="#" class="navbar-brand">
-      <%= image_tag "logo.png", alt: "GoNE Logo", class: "brand-image img-circle elevation-3", style: "opacity: .8" %>
+      <%= image_tag "logo.png", alt: "GoNE Logo", class: "brand-image img-circle elevation-2", style: "opacity: .8" %>
       <span class="brand-text font-weight-light">Going, going, gone!</span>
     </a>
       
@@ -31,8 +31,7 @@
     <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
       <li class="nav-item dropdown user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-          <%= image_tag current_user.avatar, class: "user-image img-circle elevation-2", alt: "User Image" %>
-          <span class="d-none d-md-inline"><%= current_user.full_name %></span>
+          <%= image_tag current_user.avatar, class: "brand-image img-circle elevation-2", alt: "User Image" %>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
