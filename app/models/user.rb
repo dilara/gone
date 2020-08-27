@@ -27,6 +27,8 @@ class User < ApplicationRecord
   # Validations
   validates :first_name, presence: true, length: { maximum: 255 }
   validates :last_name, presence: true, length: { maximum: 255 }
+  validates :username, presence: true, uniqueness: true, length: { minimum: 6, maximum: 32 },
+                       format: { with: /\A[a-zA-Z0-9]+\Z/ }
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }
   validates :role, inclusion: { in: roles.keys }
   validates :status, inclusion: { in: statuses.keys }
