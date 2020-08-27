@@ -23,7 +23,6 @@
     <li class="nav-item dropdown user-menu">
       <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
         <%= image_tag current_user.avatar, class: "user-image img-circle elevation-2", alt: "User Image" %>
-        <span class="d-none d-md-inline"><%= current_user.full_name %></span>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
