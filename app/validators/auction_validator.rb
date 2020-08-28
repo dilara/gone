@@ -17,6 +17,9 @@ class AuctionValidator < ActiveModel::Validator
   end
 
   def validate_cover_presence
-    @record.errors.add(:cover, 'no file added') unless @record.cover.attached?
+    return @record.errors.add(:cover, 'no file added') unless @record.cover.attached?
+    return if @record.cover.content_type.in?(%('image/jpeg image/png'))
+
+    @record.errors.add(:cover, 'needs to be a jpeg or png')
   end
 end
