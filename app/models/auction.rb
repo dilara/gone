@@ -8,7 +8,7 @@ class Auction < ApplicationRecord
   has_many_attached :images, dependent: :destroy
 
   # Enums
-  enum status: { active: 0, inactive: 1 }
+  enum status: { open: 0, closed: 1 }
 
   # Validations
   validates :status, inclusion: { in: statuses.keys }
