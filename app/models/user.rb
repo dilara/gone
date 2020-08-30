@@ -15,7 +15,8 @@ class User < ApplicationRecord
 
   # Relations
   has_many :auctions, foreign_key: 'owner_id', inverse_of: :owner, dependent: :destroy
-  has_many :bids, dependent: :destroy
+  has_many :bids, foreign_key: 'bidder_id', inverse_of: :bidder, dependent: :destroy
+  has_many :participated_auctions, -> { distinct }, through: :bids, source: :auction
   has_many :following_follow_ups, class_name: 'FollowUp', foreign_key: 'follower_id',
                                   inverse_of: :follower, dependent: :destroy
   has_many :follower_follow_ups, class_name: 'FollowUp', foreign_key: 'following_id',
