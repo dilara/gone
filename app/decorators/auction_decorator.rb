@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class AuctionDecorator < SimpleDelegator
+  def about_to_start?
+    starts_in.positive? && starts_in < 15.minutes
+  end
+
+  def about_to_expire?
+    expires_in.positive? && expires_in < 15.minutes
+  end
+
   def cover_with_ribbon
     return cover_tag if open?
 
@@ -12,6 +20,14 @@ class AuctionDecorator < SimpleDelegator
     end
   end
 
+  def expires_in
+    @expires_in ||= expires_at - now
+  end
+
+  def starts_in
+    @starts_in ||= starts_at - now
+  end
+
   private
 
   def cover_tag
@@ -20,5 +36,9 @@ class AuctionDecorator < SimpleDelegator
 
   def h
     ActionController::Base.helpers
+  end
+
+  def now
+    @now ||= Time.zone.now
   end
 end

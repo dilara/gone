@@ -27,17 +27,15 @@
             <dd class="col-sm-8"><%= @auction.status %></dd>
             <dt class="col-sm-4">Starts At</dt>
             <dd class="col-sm-8"><%= l(@auction.starts_at, format: :long)%></dd>
-            <% starts_in = @auction.starts_at - Time.zone.now %>
-            <% if starts_in.positive? && starts_in < 15.minutes %>
+            <% if @auction.about_to_start? %>
               <dt class="col-sm-4"></dt>
-              <dd class="col-sm-8"><small>(Starts in <%= distance_of_time_in_words(starts_in) %>)</small></dd>
+              <dd class="col-sm-8"><small>(Starts in <%= distance_of_time_in_words(@auction.starts_in) %>)</small></dd>
             <% end %>
             <dt class="col-sm-4">Expires At</dt>
             <dd class="col-sm-8"><%= l(@auction.expires_at, format: :long)%></dd>
-            <% expires_in = @auction.expires_at - Time.zone.now %>
-            <% if expires_in.positive? && expires_in < 15.minutes %>
+            <% if @auction.about_to_expire? %>
               <dt class="col-sm-4"></dt>
-              <dd class="col-sm-8"><small>(Expires in <%= distance_of_time_in_words(expires_in) %>)</small></dd>
+              <dd class="col-sm-8"><small>(Expires in <%= distance_of_time_in_words(@auction.expires_in) %>)</small></dd>
             <% end %>
             <dt class="col-sm-4">Owner</dt>
             <dd class="col-sm-8"><%= link_to @auction.owner.username, member_path(@auction.owner) %></dd>
