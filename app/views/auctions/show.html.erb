@@ -47,10 +47,10 @@
               Highest BID:
               <div id="last_bid">
                 <% if @auction.highest_bid.presence %>
-                <%= number_to_currency(@auction.highest_bid.offer) %>
-                <small>
-                  by <%= link_to @auction.highest_bid.bidder.username, member_path(@auction.highest_bid.bidder) %>
-                </small>
+                  <%= number_to_currency(@auction.highest_bid.offer) %>
+                  <small>
+                    by <%= link_to @auction.highest_bid.bidder.username, member_path(@auction.highest_bid.bidder_id) %>
+                  </small>
                 <% else %>
                   No bid yet
                 <% end %>
