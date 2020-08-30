@@ -10,7 +10,7 @@
     <hr>
     <h5 class="card-title"><%= auction.name %></h5>
     <h5 class="card-title" style="float: right">
-    <%= number_to_currency(auction.base_price, unit: "₺", separator: ",", format: "%n %u") %>
+    <%= number_to_currency(auction.base_price) %>
     </h5>
   </div>
 </div>

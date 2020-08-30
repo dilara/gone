@@ -49,7 +49,7 @@
               Highest BID:
               <div id="last_bid">
                 <% if @auction.highest_bid.presence %>
-                <%= number_to_currency(@auction.highest_bid.offer, unit: "₺", separator: ",", format: "%n %u") %>
+                <%= number_to_currency(@auction.highest_bid.offer) %>
                 <small>
                   by <%= link_to @auction.highest_bid.bidder.username, member_path(@auction.highest_bid.bidder) %>
                 </small>
@@ -60,7 +60,7 @@
             </h2>
             <h4 class="mt-0">
               <small>
-                Base price: <%= number_to_currency(@auction.base_price, unit: "₺", separator: ",", format: "%n %u") %>
+                Base price: <%= number_to_currency(@auction.base_price) %>
               </small>
             </h4>
             <% if @auction.open? %>
