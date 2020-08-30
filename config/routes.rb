@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       get   :edit_images
       patch :update_images
     end
+
+    get :participated, on: :collection
   end
 
   resources :users

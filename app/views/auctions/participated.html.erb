@@ -1,0 +1,7 @@
+<div class="row">
+  <% @auctions.with_attached_cover.each do |auction| %>
+    <div class="col-lg-3">
+      <%= render 'summary', auction: auction %>
+    </div>
+  <% end %>
+</div>

@@ -7,6 +7,10 @@ class AuctionsController < ApplicationController
     @auctions = Auction.all
   end
 
+  def participated
+    @auctions = current_user.participated_auctions
+  end
+
   def show
     @auction = AuctionDecorator.new(@auction)
   end
