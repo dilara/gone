@@ -8,7 +8,7 @@ class AuctionsController < ApplicationController
   end
 
   def show
-    @highest_bid = @auction.highest_bid
+    @auction = AuctionDecorator.new(@auction)
   end
 
   def new
