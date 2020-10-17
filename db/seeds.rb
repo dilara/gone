@@ -16,6 +16,12 @@ if User.count.zero?
   end
 end
 
+if Brand.count.zero?
+  6.times do |i|
+    Brand.create(name: "Brand #{i + 1}")
+  end
+end
+
 if Auction.count.zero?
   description = 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. '
   now = Time.zone.now
