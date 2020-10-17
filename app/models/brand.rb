@@ -10,4 +10,7 @@ class Brand < ApplicationRecord
   # Validations
   validates :status, inclusion: { in: statuses.keys }
   validates :name, presence: true, length: { maximum: 255 }
+
+  # Scopes
+  default_scope { order(:name) }
 end

@@ -22,6 +22,7 @@ class Auction < ApplicationRecord
   validates_with AuctionValidator
 
   # Scopes
+  default_scope { order(created_at: :desc) }
   scope :inactive, -> { where('starts_at > ?', now) }
   scope :active, -> { where('starts_at < ? and expires_at > ?', now, now) }
   scope :expired, -> { where('expires_at < ?', now) }
