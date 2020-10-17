@@ -17,7 +17,7 @@
       <div class="form-inputs">
         <div class="row">
           <div class="col-md-12">
-            <%= image_tag resource.avatar, class: "profile-user-img img-fluid img-circle", alt: "User profile picture" if resource.avatar.attached? %>
+            <%= image_tag resource.avatar, class: "profile-user-img img-fluid img-circle", alt: "User profile picture" %>
 
             <%= f.input :avatar %>
             <%= f.input :first_name, include_blank: false %>
