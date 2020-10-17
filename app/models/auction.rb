@@ -40,4 +40,10 @@ class Auction < ApplicationRecord
   def active?
     !inactive? && !expired?
   end
+
+  private
+
+  def self.now
+    @now ||= Time.zone.now
+  end
 end
