@@ -1,0 +1,25 @@
+<div class="row">
+  <% @brands.each do |brand| %>
+    <div class="col-lg-2">
+      <%= link_to brand.name, auctions_path(brand_ids: [brand.id]), class: 'btn btn-default btn-block' %>
+    </div>
+  <% end %>
+</div>
+<br />
+
+<div class="row">
+  <div class="col-lg-8">
+    <h2 class="m-0 text-dark">Latest Bids</h1><br />
+    <div class="row">
+      <% @auctions.each do |auction| %>
+        <div class="col-lg-4">
+          <%= render 'auctions/summary', auction: auction %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-lg-3 offset-lg-1">
+    <%= link_to 'Start an Auction Now', new_auction_path, class: 'btn btn-primary btn-block' %><br />
+  </div>
+</div>
