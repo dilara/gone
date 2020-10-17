@@ -11,6 +11,7 @@
           <%= f.input :cover, include_blank: false %>
           <%= f.input :name, include_blank: false %>
           <%= f.input :description, include_blank: false %>
+          <%= f.input :brand_id, collection: Brand.active, include_blank: false %>
           <%= f.input :base_price, include_blank: false %>
           <%= f.input :starts_at, include_blank: false %>
           <%= f.input :expires_at, include_blank: false %>
