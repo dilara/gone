@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class AuctionsController < ApplicationController
-  before_action :set_auction, only: %i[show edit update destroy edit_images update_images]
+  before_action :set_auction, except: %i[index participated new create]
 
   def index
-    @auctions = Auction.all
+    @auctions = Auction.active
+                       .price_under(params[:max_price])
+                       .price_above(params[:min_price])
   end
 
   def participated

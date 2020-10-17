@@ -1,7 +1,15 @@
 <div class="row">
-  <% @auctions.with_attached_cover.each do |auction| %>
-    <div class="col-lg-3">
-      <%= render 'summary', auction: auction %>
+  <aside class="col-lg-3">
+    <%= render 'filter' %>
+  </aside>
+
+  <div class="col-lg-9">
+    <div class="row">
+      <% @auctions.with_attached_cover.each do |auction| %>
+        <div class="col-lg-4">
+          <%= render 'summary', auction: auction %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
