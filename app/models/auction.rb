@@ -24,8 +24,8 @@ class Auction < ApplicationRecord
   scope :inactive, -> { where('starts_at > ?', now) }
   scope :active, -> { where('starts_at < ? and expires_at > ?', now, now) }
   scope :expired, -> { where('expires_at < ?', now) }
-  scope :price_under, -> (max) { where("base_price <= ?", max) if max.presence }
-  scope :price_above, -> (min) { where("base_price >= ?", min) if min.presence }
+  scope :price_under, ->(max) { where('base_price <= ?', max) if max.presence }
+  scope :price_above, ->(min) { where('base_price >= ?', min) if min.presence }
 
   def highest_bid
     bids.order(offer: :desc).first
@@ -42,8 +42,6 @@ class Auction < ApplicationRecord
   def active?
     !inactive? && !expired?
   end
-
-  private
 
   def self.now
     @now ||= Time.zone.now
