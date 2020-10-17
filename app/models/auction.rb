@@ -8,7 +8,7 @@ class Auction < ApplicationRecord
   has_many_attached :images, dependent: :destroy
 
   # Enums
-  enum status: { open: 0, closed: 1 }
+  enum status: { available: 0, sold: 1, completed: 2 }
 
   # Validations
   validates :status, inclusion: { in: statuses.keys }
@@ -20,11 +20,24 @@ class Auction < ApplicationRecord
   validates :expires_at, presence: true
   validates_with AuctionValidator
 
+  # Scopes
+  scope :inactive, -> { where('starts_at > ?', now) }
+  scope :active, -> { where('starts_at < ? and expires_at > ?', now, now) }
+  scope :expired, -> { where('expires_at < ?', now) }
+
   def highest_bid
     bids.order(offer: :desc).first
   end
 
+  def inactive?
+    starts_at > Time.zone.now
+  end
+
   def expired?
     expires_at < Time.zone.now
+  end
+
+  def active?
+    !inactive? && !expired?
   end
 end

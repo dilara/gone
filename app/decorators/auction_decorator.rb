@@ -10,12 +10,12 @@ class AuctionDecorator < SimpleDelegator
   end
 
   def cover_with_ribbon
-    return cover_tag if open?
+    return cover_tag if active?
 
     h.content_tag :div, class: 'position-relative' do
       h.concat cover_tag
       h.concat h.content_tag :div,
-                             h.content_tag(:div, status, class: 'ribbon bg-secondary'),
+                             h.content_tag(:div, ribbon_text, class: 'ribbon bg-secondary'),
                              class: 'ribbon-wrapper ribbon-lg'
     end
   end
@@ -26,6 +26,13 @@ class AuctionDecorator < SimpleDelegator
 
   def starts_in
     @starts_in ||= starts_at - now
+  end
+
+  def ribbon_text
+    return unless expired?
+    return 'inactive' if inactive?
+
+    available? ? 'expired' : 'sold'
   end
 
   private

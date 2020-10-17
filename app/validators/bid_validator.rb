@@ -6,7 +6,7 @@ class BidValidator < ActiveModel::Validator
     @auction = record.auction
 
     return record.errors.add(:base, 'You cannot bid on your own auction') if @auction.owner_id == record.bidder_id
-    return record.errors.add(:base, 'The auction is not open to bid') if @auction.closed?
+    return record.errors.add(:base, 'The auction is not open to bid') unless @auction.available?
     return record.errors.add(:base, 'The auction is expired') if @auction.expired?
 
     validate_offer

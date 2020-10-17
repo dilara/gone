@@ -61,7 +61,7 @@
                 Base price: <%= number_to_currency(@auction.base_price) %>
               </small>
             </h4>
-            <% if @auction.open? %>
+            <% if @auction.available? && @auction.active? %>
               <div class="mt-4">
                 <%= simple_form_for([@auction, Bid.new], remote: true) do |f| %>
                   <div id="new_bid_alert"></div>
@@ -81,6 +81,20 @@
             <% end %>
           </div>
         </div>
+        <% if @auction.expired? && @auction.highest_bid && (@auction.highest_bid.bidder_id == current_user.id) %>
+          <div class="col-12">
+            <div class="bg-gray py-2 px-3 mt-4">
+              <h2 class="mb-0">
+                You're the highest bidder, you won!
+              </h2>
+              <h4 class="mt-0">
+                <small>
+                  Your highest bid: <%= number_to_currency(@auction.highest_bid.offer) %>
+                </small>
+              </h4>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
