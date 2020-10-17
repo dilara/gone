@@ -7,6 +7,9 @@ class AuctionsController < ApplicationController
     @auctions = Auction.active
                        .price_under(params[:max_price])
                        .price_above(params[:min_price])
+                       .where(
+                         params[:brand_ids].presence ? { brand_id: params[:brand_ids] } : {}
+                       )
   end
 
   def participated

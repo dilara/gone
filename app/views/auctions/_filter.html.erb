@@ -1,6 +1,23 @@
 <%= form_tag :auctions, method: :get do %>
   <div class="form-group">
     <div class="card">
+			<article class="card-group-item">
+				<header class="card-header">
+					<h6 class="title">Brand</h6>
+				</header>
+				<div class="filter-content">
+					<div class="card-body">
+						<% Brand.active.each do |brand| %>
+							<div class="custom-control custom-checkbox">
+								<% checked = params[:brand_ids].presence ? params[:brand_ids].include?(brand.id.to_s) : false %>
+								<%= check_box_tag 'brand_ids[]', brand.id, checked, id: "brand_#{brand.id}", class: "custom-control-input" %>
+								<label class="custom-control-label" for=<%= "brand_#{brand.id}" %>><%= brand.name %></label>
+							</div>
+						<% end %>
+					</div>
+		    </div>
+	    </article>
+
   	  <article class="card-group-item">
 	  	  <header class="card-header">
 		  	  <h6 class="title">Price </h6>
