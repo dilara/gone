@@ -1,0 +1,5 @@
+<% if @response %>
+  $('#confirmation').html("You have confirmed your highest bid, the item will ship within 3 days.");
+<% else %>
+  $('#confirmation').html("An unexpected error occurred please try again.");
+<% end %>

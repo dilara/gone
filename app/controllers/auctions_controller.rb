@@ -57,6 +57,11 @@ class AuctionsController < ApplicationController
     end
   end
 
+  def confirm
+    @response = @auction.update(status: :sold)
+    respond_to :js
+  end
+
   private
 
   def set_auction

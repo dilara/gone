@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :bids, only: :create
 
     member do
+      get   :confirm
       get   :edit_images
       patch :update_images
     end

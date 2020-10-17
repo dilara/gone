@@ -92,6 +92,10 @@
                   Your highest bid: <%= number_to_currency(@auction.highest_bid.offer) %>
                 </small>
               </h4>
+              <div id="confirmation">
+                <%= link_to 'Confirm Bid', confirm_auction_path(), remote: true, class: 'btn btn-block btn-info' if @auction.available? && @auction.expired? %>
+                <%= 'You have confirmed your highest bid, the item will ship within X days.' if @auction.sold? %>
+              </div>
             </div>
           </div>
         <% end %>
